@@ -1,0 +1,26 @@
+{%extends "home/header.html"%}
+{% block content %}
+
+<style>#wrapper {width: 700px;}
+#wrapper .container {max-width: 100%; display: block;}</style>
+<div id="wrapper">
+	<div class="panel panel-primary">
+        <div class="panel-heading">Login</div>
+        <div class="panel-body">
+            <form class = "form-horizontal" action="{%url 'home:doctor-add'%}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'home/form-template.html' %}
+                <div class="form-group">
+                    <div class = "col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-sucess">Submit</button>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+	</div>
+</div>
+
+{% endblock %}

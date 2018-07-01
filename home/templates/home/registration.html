@@ -1,0 +1,27 @@
+{%extends "home/header.html"%}
+{% block content %}
+<style>#wrapper {width: 700px;} 
+#wrapper .container {max-width: 100%; display: block;}</style>
+<div id="wrapper">
+	<div class="container">
+		<h1>{{doctor.name}}</h1>
+		{% if error_message %}
+			<p><strong>{{error_message}}</strong></p>
+		{% endif %}
+		<form action = "/signup/{{doctor.id}}/visited" method = "post">
+			{% csrf_token %}
+			{% for patient in doctor.patient_set.all %}
+				<input type = "radio" id = "patient{{ forloop.counter }}" name = "patient" value = "{{patient.id}}" >
+				<label for ="patient{{ forloop.counter }}">
+					{{ patient.name }}
+					{% if patient.is_visited %}
+						<img scr = "http://i.imgur.com/b9b13Rd.png"/>
+						
+					{% endif %}
+				</label><br>	
+			{% endfor %}
+			<input type = "submit" value = "Visited">
+		</form>
+	</div>
+</div>
+{% endblock %}

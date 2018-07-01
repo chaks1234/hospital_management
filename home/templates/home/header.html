@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Prashant</title>
+	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type = "text/css"/>
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+			
+	<style type="text/css">
+		html,
+		body {
+		  height:100%;
+		  background-color: #000000;
+		}
+	</style>
+
+		
+</head>
+<!--  -->
+<body class="body" style="background-color:#f6f6f6">
+	<div class="container-fluid" style="min-height:100%; background-color:#ffffff " >
+				<nav class="navbar navbar-inverse  navbar-fixed-top">
+					  <div class="container-fluid">						  
+							<p class="navbar-text "> <a href="{% url 'home:index'%}" class="navbar-link">Home</a> |
+								<a href="{% url 'home:doctor-add'%}" class="navbar-link">Registration Desk</a>
+								| <a href="{% url 'home:index'%}" class="navbar-link">Teachers</a>|
+								 <a href="{% url 'home:patient-add'%}" class="navbar-link">Add Teachers</a>|
+							<a href="{% url 'home:patient'%}" class="navbar-link">All students</a> </p>
+						  
+					  </div>
+					  
+				  </nav>
+	
+
+		<div class="row"  style='margin-top:50px'>
+			<br>
+		  <div class="col-md-2">
+				<div class="container-fluid">
+					<img src="{% static 'home/img/teacher.jpg' %}" class="responsive-img" style='max-height:300px;' alt="face">
+
+				</div>
+		  </div>
+
+
+		  <div class="col-md-2">
+		  
+			<div class='container-fluid' style='margin-left:100px' >
+			<br>
+			   {% block content %}
+			   {% endblock %}	
+			</div>
+		  </div>
+
+		</div>
+
+	</div>
+	
+	<footer>
+	
+		<div class="container">
+				  <center>
+				  <nav class="navbar navbar-inverse  navbar-fixed-bottom">
+					  <div class="container-fluid">						  
+							<p class="navbar-text ">Created  by <a href="#" class="navbar-link">Prashant</a> | <a href="#" class="navbar-link">gmail</a></p>
+						  
+					  </div>
+					  
+				  </nav>
+				  </center>
+			  </div>
+	</footer>	
+	
+</body>
+
+</html>

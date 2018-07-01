@@ -1,0 +1,38 @@
+{%extends "home/header.html"%}
+{% block content %}
+<style>#wrapper {width: 700px;} 
+#wrapper .container {max-width: 100%; display: block;}</style>
+<div id="wrapper">
+	<div class="panel panel-primary">
+		<div class="panel-heading">{{doctor.name}}</div>
+        <div class="panel-body">
+		{% if doctor.patient_set.all %}
+			<table class="table table-striped">
+				<tr>
+					<td>Sr. no.</td>
+    				<td>Name:</td>
+    				<td>Aadhar No.</td>
+					<td>Visited</td>
+  				</tr>
+				{% for patient in doctor.patient_set.all %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					{% if is_visited %}
+						<td>{{patient.name}}</td>
+					{% else %}
+						<td >{{patient.name}}</td>
+					{% endif %}
+					<td>{{patient.adhar}}</td>
+					<td>{{patient.is_visited}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+			{% else %}
+			<h2> You dont have any patient</h2>
+			{% endif %}
+		</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

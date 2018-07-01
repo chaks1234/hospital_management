@@ -1,0 +1,45 @@
+{%extends "home/header.html"%}
+{% block content %}
+<style>#wrapper {width: 800px;}
+#wrapper .container {max-width: 100%; display: block;}</style>
+<div id="wrapper">
+	<div class="panel panel-primary">
+		<div class="panel-heading">List of all Students</div>
+        <div class="panel-body">
+
+        	{% if all_patient %}
+			<table class="table table-striped">
+				<tr>
+					<td>Sr. no.</td>
+    				<td>Name:</td>
+    				<td>Aadhar No.</td>
+                    <td>Teacher</td>
+					<td>Edit</td>
+					<td>Delete</td>
+  				</tr>
+				{%for patient in all_patient %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{patient.name}}</td>
+                    <td>{{ patient.adhar}}</td>
+                    <td>{{patient.Teacher}}</td>
+					<td>
+						<a href="{% url 'home:doctor-update' patient.id %}"> edit</a>{% csrf_token %}
+					</td>
+					<td>
+						<form method="POST" action="{% url 'home:doctor-delete' patient.id %}">
+							{% csrf_token %}<input type="submit" value="DELETE"> </form>
+					</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+			{% else %}
+			<h3>You don't have any patient</h3>
+			{% endif%}
+		</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
